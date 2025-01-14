@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":testmodule"))
     
     implementation("androidx.core:core-ktx:1.12.0")
@@ -62,9 +63,6 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
