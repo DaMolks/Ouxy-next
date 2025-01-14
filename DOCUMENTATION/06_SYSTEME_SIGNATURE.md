@@ -2,98 +2,88 @@
 
 ## Objectifs
 
-### Principes Fondamentaux
-- Capture haute précision
-- Stockage sécurisé
-- Utilisable dans tous les modules
-- Expérience utilisateur fluide
+### Capture de Signature
+- Représentation numérique fidèle
+- Haute qualité visuelle
+- Facilité d'utilisation
 
-## Architecture
+## Composants Techniques
 
-### Composants
-1. Interface de Capture
-2. Algorithme de Lissage
-3. Système de Stockage
-4. Outil de Validation
-
-## Interface de Capture
-
-### Caractéristiques
+### Interface de Capture
 - Zone de dessin dédiée
-- Détection multi-touch
-- Rendu vectoriel
-- Feedback visuel
+- Support multi-touch
+- Rendu haute résolution
 
-### Exemple d'Implémentation
-```kotlin
-class SignatureCapture {
-    fun startCapture(context: Context) {
-        // Initialisation de la capture
-    }
+### Algorithmes de Traitement
 
-    fun stopCapture(): Signature {
-        // Finalisation et validation
-    }
-}
-```
-
-## Algorithme de Lissage
-
-### Techniques
-- Courbes de Bézier
-- Algorithme de Douglas-Peucker
-- Moyenne mobile pondérée
-
-### Objectifs
+#### Lissage de Trait
+- Algorithme de Catmull-Rom
 - Réduction du bruit
 - Préservation de l'intention
-- Qualité esthétique
 
-## Stockage
+#### Optimisations
+- Réduction du nombre de points
+- Compression optimale
+- Conservation de la qualité
 
-### Formats
-- SVG (recommandé)
-- PNG haute résolution
-- Données vectorielles
+## Structure de Données
 
-### Sécurité
-- Chiffrement local
-- Accès limité
-- Tracé d'audit
-
-## Utilisation Multi-Modules
-
-### Interface Standardisée
 ```kotlin
-interface SignatureProvider {
-    fun getCapturedSignature(): Signature
-    fun reuseSignature(module: String): Boolean
-}
+data class Signature(
+    val points: List<SignaturePoint>,
+    val metadata: SignatureMetadata
+)
+
+data class SignaturePoint(
+    val x: Float,
+    val y: Float,
+    val pressure: Float,
+    val timestamp: Long
+)
+
+data class SignatureMetadata(
+    val deviceInfo: String,
+    val captureDate: Instant,
+    val signerIdentifier: String
+)
 ```
 
-## Bonnes Pratiques
+## Fonctionnalités
 
-### Pour les Développeurs
-- Respecter l'interface standard
-- Minimiser la réutilisation
-- Demander confirmation
+### Options de Personnalisation
+- Choix de couleur
+- Réglage de l'épaisseur
+- Annulation/Reprise
 
-### Pour les Utilisateurs
-- Signature claire
-- Vérification avant validation
-- Comprendre le contexte
+### Stockage
+- Format vectoriel (SVG)
+- Compression
+- Chiffrement optionnel
 
 ## Cas d'Utilisation
-- Rapports
-- Confirmations client
-- Documents officiels
 
-## Annexes
+### Multimodules
+- Intégration dans rapports
+- Signature client
+- Vérification d'identité
 
-### Algorithme de Lissage Simple
+## Sécurité
+
+### Protections
+- Prévention de la reproduction
+- Vérification d'intégrité
+- Anonymisation possible
+
+## Exemple d'Implémentation
+
 ```kotlin
-fun smoothSignature(points: List<Point>): List<Point> {
-    // Algorithme de lissage
-    return smoothedPoints
+class SignatureCapture {
+    fun capture(options: CaptureOptions): Signature {
+        // Logique de capture
+    }
+
+    fun process(signature: Signature): ProcessedSignature {
+        // Lissage et optimisation
+    }
 }
 ```
