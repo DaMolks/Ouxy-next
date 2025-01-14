@@ -24,7 +24,8 @@ class ModuleManager @Inject constructor(
 ) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-    val installedModules: LiveData<List<ModuleInfo>> = moduleStateRepository.getAllModuleStates().asLiveData()
+    val installedModules: LiveData<List<ModuleInfo>> = moduleStateRepository.getAllModuleStates()
+        .asLiveData(scope.coroutineContext)
 
     private val _moduleLoadingState = MutableLiveData<ModuleLoadingState>()
     val moduleLoadingState: LiveData<ModuleLoadingState> = _moduleLoadingState
