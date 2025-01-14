@@ -3,7 +3,7 @@ package com.damolks.ouxynext.ui.debug
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.damolks.ouxynext.data.ModuleInfo
+import com.damolks.ouxynext.core.model.ModuleInfo
 import com.damolks.ouxynext.databinding.ItemModuleBinding
 
 class ModuleAdapter(
