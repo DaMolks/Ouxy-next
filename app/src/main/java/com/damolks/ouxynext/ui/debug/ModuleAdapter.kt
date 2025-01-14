@@ -34,20 +34,14 @@ class ModuleAdapter(
     inner class ModuleViewHolder(private val binding: ItemModuleBinding) : 
         RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onModuleClick(modules[position])
-                }
-            }
-        }
-
         fun bind(module: ModuleInfo) {
             binding.apply {
                 moduleNameTextView.text = module.name
-                moduleVersionTextView.text = module.version
-                moduleStatusTextView.text = if (module.isActive) "Actif" else "Inactif"
+                moduleVersionTextView.text = "Version ${module.version}"
+                moduleActionButton.text = if (module.isActive) "Désactiver" else "Activer"
+                moduleActionButton.setOnClickListener {
+                    onModuleClick(module)
+                }
             }
         }
     }
