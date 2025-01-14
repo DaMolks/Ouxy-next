@@ -16,8 +16,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideModuleManager(): ModuleManager {
-        return ModuleManager()
+    fun provideModuleManager(
+        @ApplicationContext context: Context
+    ): ModuleManager {
+        return ModuleManager(context)
     }
 
     @Provides
