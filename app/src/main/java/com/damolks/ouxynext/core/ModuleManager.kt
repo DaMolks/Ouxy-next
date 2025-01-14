@@ -3,8 +3,6 @@ package com.damolks.ouxynext.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.damolks.ouxynext.data.ModuleInfo
-import com.google.android.play.core.splitinstall.SplitInstallManager
-import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,14 +32,22 @@ class ModuleManager @Inject constructor() {
 
     fun loadModule(moduleId: String) {
         _moduleLoadingState.value = ModuleLoadingState.Loading(moduleId)
-        // Simulation d'un chargement pour le PoC
+        val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
+        val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
+        if (moduleIndex != -1) {
+            currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = true)
+            _installedModules.value = currentModules
+        }
         _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
     }
 
     fun unloadModule(moduleId: String) {
         val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
-        currentModules.removeIf { it.id == moduleId }
-        _installedModules.value = currentModules
+        val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
+        if (moduleIndex != -1) {
+            currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = false)
+            _installedModules.value = currentModules
+        }
     }
 }
 
