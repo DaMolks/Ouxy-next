@@ -15,24 +15,31 @@ class DebugActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDebugBinding
     private val viewModel: DebugViewModel by viewModels()
     private lateinit var moduleAdapter: ModuleAdapter
+    private lateinit var eventLogAdapter: EventLogAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDebugBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView()
+        setupRecyclerViews()
         setupObservers()
         setupClickListeners()
     }
 
-    private fun setupRecyclerView() {
+    private fun setupRecyclerViews() {
         moduleAdapter = ModuleAdapter(emptyList()) { moduleInfo ->
             viewModel.toggleModule(moduleInfo.id)
         }
         binding.modulesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@DebugActivity)
             adapter = moduleAdapter
+        }
+
+        eventLogAdapter = EventLogAdapter()
+        binding.eventLogsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@DebugActivity)
+            adapter = eventLogAdapter
         }
     }
 
@@ -41,13 +48,18 @@ class DebugActivity : AppCompatActivity() {
             moduleAdapter.updateModules(modules)
         }
 
+        viewModel.eventLogs.observe(this) { logs ->
+            eventLogAdapter.submitList(logs)
+            binding.eventLogsRecyclerView.scrollToPosition(logs.size - 1)
+        }
+
         viewModel.events.observe(this) { event ->
-            binding.eventLogTextView.append("\n${event}")
+            // Les événements sont maintenant gérés par l'adapter
         }
 
         lifecycleScope.launch {
             viewModel.systemEvents.collect { event ->
-                binding.eventLogTextView.append("\nSystem: ${event}")
+                // Les événements système sont maintenant gérés par l'adapter
             }
         }
     }
@@ -58,7 +70,7 @@ class DebugActivity : AppCompatActivity() {
         }
 
         binding.clearLogButton.setOnClickListener {
-            binding.eventLogTextView.text = ""
+            viewModel.clearLogs()
         }
     }
 }
