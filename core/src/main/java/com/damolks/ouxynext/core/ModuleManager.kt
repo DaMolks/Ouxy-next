@@ -4,61 +4,78 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import com.damolks.ouxynext.core.model.ModuleInfo
+import com.damolks.ouxynext.core.repository.EventLogRepository
+import com.damolks.ouxynext.core.repository.ModuleStateRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ModuleManager @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val moduleStateRepository: ModuleStateRepository,
+    private val eventLogRepository: EventLogRepository
 ) {
-    private val _installedModules = MutableLiveData<List<ModuleInfo>>()
-    val installedModules: LiveData<List<ModuleInfo>> = _installedModules
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+    val installedModules: LiveData<List<ModuleInfo>> = moduleStateRepository.getAllModuleStates().asLiveData()
 
     private val _moduleLoadingState = MutableLiveData<ModuleLoadingState>()
     val moduleLoadingState: LiveData<ModuleLoadingState> = _moduleLoadingState
 
     init {
-        refreshInstalledModules()
+        initializeDefaultModules()
     }
 
-    private fun refreshInstalledModules() {
-        _installedModules.value = listOf(
-            ModuleInfo(
-                id = "testmodule",
+    private fun initializeDefaultModules() {
+        scope.launch {
+            moduleStateRepository.updateModuleState(
+                moduleId = "testmodule",
                 name = "Module de Test",
                 version = "1.0.0",
                 isActive = false
             )
-        )
+        }
     }
 
     fun loadModule(moduleId: String) {
         _moduleLoadingState.value = ModuleLoadingState.Loading(moduleId)
         
-        try {
-            when (moduleId) {
-                "testmodule" -> {
-                    updateModuleState(moduleId, true)
-                    launchModuleActivity(moduleId)
-                    _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
+        scope.launch {
+            try {
+                when (moduleId) {
+                    "testmodule" -> {
+                        moduleStateRepository.updateModuleState(
+                            moduleId = moduleId,
+                            name = "Module de Test",
+                            version = "1.0.0",
+                            isActive = true
+                        )
+                        eventLogRepository.logEvent(
+                            moduleId = moduleId,
+                            eventType = "MODULE_LOADED"
+                        )
+                        launchModuleActivity(moduleId)
+                        _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
+                    }
+                    else -> {
+                        _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, "Module non reconnu")
+                    }
                 }
-                else -> {
-                    _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, "Module non reconnu")
-                }
+            } catch (e: Exception) {
+                _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, e.message ?: "Erreur inconnue")
+                eventLogRepository.logEvent(
+                    moduleId = moduleId,
+                    eventType = "MODULE_LOAD_ERROR",
+                    data = mapOf("error" to (e.message ?: "Erreur inconnue"))
+                )
             }
-        } catch (e: Exception) {
-            _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, e.message ?: "Erreur inconnue")
-        }
-    }
-
-    private fun updateModuleState(moduleId: String, active: Boolean) {
-        val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
-        val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
-        if (moduleIndex != -1) {
-            currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = active)
-            _installedModules.value = currentModules
         }
     }
 
@@ -76,7 +93,18 @@ class ModuleManager @Inject constructor(
     }
 
     fun unloadModule(moduleId: String) {
-        updateModuleState(moduleId, false)
+        scope.launch {
+            moduleStateRepository.updateModuleState(
+                moduleId = moduleId,
+                name = "Module de Test",
+                version = "1.0.0",
+                isActive = false
+            )
+            eventLogRepository.logEvent(
+                moduleId = moduleId,
+                eventType = "MODULE_UNLOADED"
+            )
+        }
     }
 }
 
