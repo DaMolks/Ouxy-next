@@ -1,6 +1,7 @@
 package com.damolks.ouxynext.testmodule
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.damolks.ouxynext.testmodule.databinding.ActivityTestModuleBinding
@@ -18,6 +19,7 @@ class TestModuleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupTestButtons()
+        observeResults()
     }
 
     private fun setupTestButtons() {
@@ -37,6 +39,12 @@ class TestModuleActivity : AppCompatActivity() {
             testPermissionsButton.setOnClickListener {
                 viewModel.testPermissions()
             }
+        }
+    }
+
+    private fun observeResults() {
+        viewModel.testResults.observe(this) { result ->
+            Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
         }
     }
 }
