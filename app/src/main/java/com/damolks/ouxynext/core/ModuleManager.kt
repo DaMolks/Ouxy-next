@@ -2,6 +2,7 @@ package com.damolks.ouxynext.core
 
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.damolks.ouxynext.data.ModuleInfo
@@ -10,6 +11,8 @@ import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.InstallStatus
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,21 +31,6 @@ class ModuleManager @Inject constructor(
 
     init {
         refreshInstalledModules()
-        setupInstallListener()
-    }
-
-    private fun setupInstallListener() {
-        val listener = SplitInstallStateUpdatedListener { state ->
-            when (state.status()) {
-                SplitInstallSessionStatus.DOWNLOADING -> _moduleLoadingState.value = 
-                    ModuleLoadingState.Loading(state.moduleNames().first())
-                SplitInstallSessionStatus.INSTALLED -> _moduleLoadingState.value = 
-                    ModuleLoadingState.Success(state.moduleNames().first())
-                SplitInstallSessionStatus.FAILED -> _moduleLoadingState.value = 
-                    ModuleLoadingState.Error(state.moduleNames().first(), "Installation échouée")
-            }
-        }
-        splitInstallManager.registerListener(listener)
     }
 
     private fun refreshInstalledModules() {
@@ -77,6 +65,7 @@ class ModuleManager @Inject constructor(
                         }
                         
                         // Lancement de l'activité du module
+                        _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
                         launchModuleActivity(moduleId)
                     }
                     .addOnFailureListener { exception ->
