@@ -10,28 +10,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="12dp">
 
-        <TextView
-            android:id="@+id/moduleNameTextView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/moduleVersionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/moduleNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/moduleStatusTextView"
+            <TextView
+                android:id="@+id/moduleVersionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/moduleActionButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="#4CAF50" />
+            android:layout_gravity="center_vertical"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
