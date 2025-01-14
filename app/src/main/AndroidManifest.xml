@@ -26,9 +26,12 @@
             </intent-filter>
         </activity>
 
-        <receiver 
-            android:name="com.google.android.play.core.install.InstallStateUpdatedReceiver"
-            android:exported="false" />
+        <!-- Module Activities -->
+        <activity
+            android:name="com.damolks.ouxynext.testmodule.TestModuleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_test_module"
+            android:theme="@style/Theme.OuxyNext" />
     </application>
 
 </manifest>
