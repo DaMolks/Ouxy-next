@@ -5,6 +5,9 @@ import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.damolks.ouxynext.data.ModuleInfo
+import com.google.android.play.core.splitinstall.SplitInstallManager
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import com.google.android.play.core.splitinstall.SplitInstallRequest
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -13,6 +16,8 @@ import javax.inject.Singleton
 class ModuleManager @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
+    private val splitInstallManager: SplitInstallManager = SplitInstallManagerFactory.create(context)
+    
     private val _installedModules = MutableLiveData<List<ModuleInfo>>()
     val installedModules: LiveData<List<ModuleInfo>> = _installedModules
 
@@ -29,7 +34,7 @@ class ModuleManager @Inject constructor(
                 id = "testmodule",
                 name = "Module de Test",
                 version = "1.0.0",
-                isActive = true
+                isActive = false
             )
         )
     }
@@ -39,20 +44,35 @@ class ModuleManager @Inject constructor(
         
         when (moduleId) {
             "testmodule" -> {
-                // Mise à jour de l'état du module
-                val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
-                val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
-                if (moduleIndex != -1) {
-                    currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = true)
-                    _installedModules.value = currentModules
+                if (splitInstallManager.installedModules.contains("testmodule")) {
+                    updateModuleState(moduleId, true)
+                    launchModuleActivity(moduleId)
+                } else {
+                    val request = SplitInstallRequest.newBuilder()
+                        .addModule(moduleId)
+                        .build()
+
+                    splitInstallManager.startInstall(request)
+                        .addOnSuccessListener {
+                            updateModuleState(moduleId, true)
+                            launchModuleActivity(moduleId)
+                        }
+                        .addOnFailureListener { exception ->
+                            _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, exception.message ?: "Erreur inconnue")
+                        }
                 }
-                
-                // Lancement de l'activité du module
-                _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
-                launchModuleActivity(moduleId)
             }
-            else -> {
-                _moduleLoadingState.value = ModuleLoadingState.Error(moduleId, "Module non reconnu")
+        }
+    }
+
+    private fun updateModuleState(moduleId: String, active: Boolean) {
+        val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
+        val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
+        if (moduleIndex != -1) {
+            currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = active)
+            _installedModules.value = currentModules
+            if (active) {
+                _moduleLoadingState.value = ModuleLoadingState.Success(moduleId)
             }
         }
     }
@@ -71,12 +91,7 @@ class ModuleManager @Inject constructor(
     }
 
     fun unloadModule(moduleId: String) {
-        val currentModules = _installedModules.value?.toMutableList() ?: mutableListOf()
-        val moduleIndex = currentModules.indexOfFirst { it.id == moduleId }
-        if (moduleIndex != -1) {
-            currentModules[moduleIndex] = currentModules[moduleIndex].copy(isActive = false)
-            _installedModules.value = currentModules
-        }
+        updateModuleState(moduleId, false)
     }
 }
 
