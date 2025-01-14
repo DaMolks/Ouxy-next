@@ -1,48 +1,48 @@
-# Ouxy Next - Application Modulaire Android
+# 🚀 Ouxy Next : Voyage dans l'Univers des Modules
 
-## Présentation du Projet
+![Space Exploration](https://img.shields.io/badge/Mission-Module%20Exploration-blueviolet)
+![Kotlin](https://img.shields.io/badge/Language-Kotlin-orange)
+![Android](https://img.shields.io/badge/Platform-Android-green)
 
-### Objectif
-Développer une application Android modulaire permettant la gestion et la création de modules personnalisés pour différents besoins métiers.
+## 🌌 Mission Objectives
 
-### Architecture Principale
-- **Core Application** : Gestionnaire central des modules
-- **Module Source** : Template générique pour créer des modules
-- Fonctionnement hors-ligne prioritaire
+Ouxy Next est une application Android conçue comme un vaisseau spatial modulaire :
+
+### 🛰️ Architecture Principale
+- **Core Application** : Poste de contrôle central
+- **Module Source** : Stations modulaires adaptables
+- Fonctionnement autonome
 - Synchronisation cloud optionnelle
 
-### Fonctionnalités Clés
-- Système flexible d'installation de modules
+### 🌠 Fonctionnalités Principales
+- Système d'amarrage de modules
 - Gestion des versions
-- Conservation des données lors des mises à jour
-- Exportation ponctuelle (Google Drive, Mail)
+- Conservation des données inter-missions
+- Exportation de données (Google Drive, Communication)
 
-### Technologies
+### 🚀 Technologies de Propulsion
 - Langage : Kotlin
 - Architecture : MVVM
 - Stockage : Room Database
-- Gestionnaire de dépendances : Gradle
+- Navigation : Gradle
 
-### Roadmap
-1. Développement du Core Application
-2. Création du Module Source
-3. Implémentation du système de modules
-4. Développement du mécanisme de migration
-5. Tests et validation
+### 🌍 Plan de Mission
+1. Développement du Vaisseau Principal
+2. Configuration des Modules
+3. Tests de Navigation
+4. Préparation à l'Exploration
 
-### Prérequis
+### 🛠️ Équipement Requis
 - Android Studio
 - SDK Android 34
 - Kotlin
-- Gradle 8.2.1
 - JDK 17
 
-## Documentation
-La documentation détaillée sera développée progressivement, couvrant :
+## 📡 Centre de Documentation
+Documentation en développement, couvrant :
 - Architecture système
 - Création de modules
-- API de communication
-- Bonnes pratiques
+- Protocoles de communication
 
-## Licence
-[À définir]
+## 🌌 Licence
+Mission en cours d'habilitation
