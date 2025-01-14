@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ouxy Next"
 include(":app")
+include(":testmodule")
