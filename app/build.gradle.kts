@@ -38,6 +38,14 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    dynamicFeatures += setOf(":testmodule")
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
@@ -59,6 +67,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    // Dynamic Feature Module Support
+    api("com.google.android.play:core-ktx:1.8.1")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
