@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DefaultEventBus @Inject constructor() : EventBus {
+class DefaultEventBus @Inject constructor() : EventBus() {
     private val _events = MutableSharedFlow<Event>(replay = 0, extraBufferCapacity = 64)
     
     override val events: SharedFlow<Event> = _events
