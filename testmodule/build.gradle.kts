@@ -26,6 +26,13 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
 }
 
 dependencies {
@@ -47,4 +54,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    // Dynamic Feature Module Support
+    implementation("com.google.android.play:core-ktx:1.8.1")
 }
