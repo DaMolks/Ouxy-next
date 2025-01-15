@@ -43,8 +43,8 @@ class TestModuleActivity : AppCompatActivity() {
     }
 
     private fun observeResults() {
-        viewModel.testResults.observe(this) { result ->
-            Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+        viewModel.testResults.observe(this) { message ->
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
