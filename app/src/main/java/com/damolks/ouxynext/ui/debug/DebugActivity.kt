@@ -5,13 +5,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.damolks.ouxynext.R
 import com.damolks.ouxynext.databinding.ActivityDebugBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DebugActivity : AppCompatActivity() {
-
+    
     private lateinit var binding: ActivityDebugBinding
     private val viewModel: DebugViewModel by viewModels()
     private lateinit var moduleAdapter: ModuleAdapter
