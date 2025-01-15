@@ -1,148 +1,52 @@
-# Roadmap Ouxy Next - Développement Modulaire
+# Roadmap Ouxy Next - Approche Itérative et Modulaire
 
-## Phase 0 : Préparation et Infrastructure
+## Principe Directeur
+**MVP Incrémental : Construction par couches minimales et validation systématique**
 
-### 0.1 Architecture Socle
-- Définition des interfaces core
-- Création du bus d'événements
-- Modèle de communication inter-composants
-- Validation du design technique
+## Phase 0 : Préparation Minimale
 
-### 0.2 Système de Persistance
-- Modèle de données génériques
-- Mécanisme de stockage
-- Gestion des migrations
-- Sécurisation des données
+### 0.1 Infrastructure de Base
+- [x] Définition des interfaces core
+- [x] Modèle de communication minimal
+- [ ] Validation technique préliminaire
 
-### 0.3 Authentification et Sécurité
-- Système de profil technicien
-- Gestion des permissions
-- Mécanismes de sécurité
+### 0.2 Première Couche Fonctionnelle
+- [ ] Bus d'événements minimal
+- [ ] Persistance basique
+- [ ] Sécurité embryonnaire
 
-## Phase 1 : Core Application
+## Phase 1 : MVP Restreint
 
-### 1.1 Interface Principale
-- Design minimal
-- Navigation
-- Écran d'accueil
-- Gestion des modules
+### 1.1 Core Applicatif
+- [ ] Interface principale réduite
+- [ ] Navigation basique
+- [ ] Gestion de module embryonnaire
 
-### 1.2 Premier Démarrage
-- Animation d'introduction
-- Création profil technicien
-- Configuration initiale
-- Tutoriel utilisateur
+### 1.2 Premier Module Prototype
+- [ ] Module Notes très simple
+- [ ] Intégration minimale
+- [ ] Tests de faisabilité
 
-## Phase 2 : Système de Modules
+## Stratégie de Développement
 
-### 2.1 Module Engine
-- Mécanisme de chargement
-- Validation des modules
-- Gestion du cycle de vie
-- Marketplace GitHub
+### Principes
+1. Itérations courtes (1-2 semaines)
+2. Validation systématique
+3. Minimal viable product
+4. Focus sur l'intégration
 
-### 2.2 Interface de Module
-- Contrats standards
-- Système d'événements
-- Règles de communication
+### Critères de Validation
+- Cohérence architecturale
+- Qualité de l'intégration
+- Tests de non-régression
 
-## Phase 3 : Premiers Modules Utilitaires
+## Points de Vigilance
 
-### 3.1 Module Notes
-- Interface de base
-- Système de création/édition
-- Stockage
-- Recherche
+### Risques À Surveiller
+- Complexity creep
+- Dérives techniques
+- Incohérences entre composants
 
-### 3.2 Module Rapports
-- Structure de rapport
-- Génération de documents
-- Signature
-- Export
+## Recommandation Finale
 
-### 3.3 Module Inventaire
-- Gestion des éléments
-- Suivi des stocks
-- Recherche et filtres
-
-## Phase 4 : Fonctionnalités Avancées
-
-### 4.1 Synchronisation
-- Export Google Drive
-- Envoi de mails
-- Gestion hors-ligne
-
-### 4.2 Personnalisation
-- Thèmes
-- Réglages utilisateur
-- Configuration des modules
-
-## Phase 5 : Finalisation et Tests
-
-### 5.1 Tests Unitaires
-- Couverture complète
-- Tests d'intégration
-- Validation des flux
-
-### 5.2 Documentation
-- Manuel technique
-- Guide utilisateur
-- Documentation des modules
-
-## Livrables par Phase
-
-### Phase 0
-- [ ] Interfaces core
-- [ ] Bus d'événements
-- [ ] Modèle de persistance
-- [ ] Système de sécurité
-
-### Phase 1
-- [ ] Interface principale
-- [ ] Écran de premier démarrage
-- [ ] Navigation
-
-### Phase 2
-- [ ] Système de modules
-- [ ] Mécanisme de chargement
-- [ ] Marketplace
-
-### Phase 3
-- [ ] Module Notes
-- [ ] Module Rapports
-- [ ] Module Inventaire
-
-### Phase 4
-- [ ] Synchronisation
-- [ ] Personnalisation
-- [ ] Fonctionnalités avancées
-
-### Phase 5
-- [ ] Tests complets
-- [ ] Documentation
-- [ ] Préparation livraison
-
-## Recommandations pour les Claude
-
-1. Suivre rigoureusement la roadmap
-2. Documentation systématique
-3. Tests unitaires obligatoires
-4. Validation des interfaces
-5. Communication claire
-
-## Critères de Validation
-
-- Compatibilité totale
-- Performance optimale
-- Sécurité renforcée
-- Facilité d'utilisation
-- Extensibilité
-
-## Outils et Technologies
-
-- Langage : Kotlin
-- Architecture : MVVM
-- Dynamic Feature Modules
-- Room Database
-- Coroutines
-- GitHub pour versionnement
+**🌟 Construire un écosystème, pas juste une application**
