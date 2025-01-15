@@ -4,21 +4,25 @@ import com.damolks.ouxynext.core.EventBus
 import com.damolks.ouxynext.core.ModuleManager
 import com.damolks.ouxynext.impl.DefaultEventBus
 import com.damolks.ouxynext.impl.DefaultModuleManager
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AppModule {
+object AppModule {
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindModuleManager(impl: DefaultModuleManager): ModuleManager
+    fun provideModuleManager(): ModuleManager {
+        return DefaultModuleManager()
+    }
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindEventBus(impl: DefaultEventBus): EventBus
+    fun provideEventBus(): EventBus {
+        return DefaultEventBus()
+    }
 }
