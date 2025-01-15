@@ -11,12 +11,10 @@
         <dist:fusing dist:include="false" />
     </dist:module>
 
-    <application>
+    <application
+        android:supportsRtl="true">
         <activity
-            android:name=".TestModuleActivity"
-            android:exported="false"
-            android:label="@string/title_activity_test_module"
-            android:theme="@style/Theme.OuxyNext" />
+            android:exported="true"
+            android:name="com.damolks.ouxynext.testmodule.TestModuleActivity" />
     </application>
-
 </manifest>
