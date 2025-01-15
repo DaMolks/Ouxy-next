@@ -3,6 +3,7 @@ package com.damolks.ouxynext.ui.debug
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.damolks.ouxynext.core.Event
 import com.damolks.ouxynext.core.EventBus
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import androidx.lifecycle.lifecycleScope
 
 @HiltViewModel
 class DebugViewModel @Inject constructor(
@@ -24,7 +26,7 @@ class DebugViewModel @Inject constructor(
 ) : ViewModel() {
 
     val moduleList: LiveData<List<ModuleInfo>> = moduleManager.installedModules
-    val eventLogs: LiveData<List<EventLogEntity>> = eventLogRepository.getAllEvents().asLiveData()
+    val eventLogs: LiveData<List<EventLogEntity>> = eventLogRepository.getAllEvents().asLiveData(viewModelScope.coroutineContext)
 
     private val _events = MutableLiveData<String>()
     val events: LiveData<String> = _events
