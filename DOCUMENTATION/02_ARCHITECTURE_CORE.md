@@ -1,1 +1,63 @@
-IyBBcmNoaXRlY3R1cmUgQ29yZSBkZSBsJ0FwcGxpY2F0aW9uCgojIyBTdHJ1Y3R1cmUgUHJpbmNpcGFsZQoKIyMjIENvbXBvc2FudHMgRm9uZGFtZW50YXV4CjEuICoqR2VzdGlvbm5haXJlIGRlIE1vZHVsZXMqKgogICAtIFJlc3BvbnNhYmxlIGRlIGwnaW5zdGFsbGF0aW9uCiAgIC0gR2VzdGlvbiBkdSBjeWNsZSBkZSB2aWUKICAgLSBWYWxpZGF0aW9uIGRlcyBtb2R1bGVzCgoyLiAqKkJhc2UgZGUgRG9ubsOpZXMgQ2VudHJhbGUqKgogICAtIFN0b2NrYWdlIGRlcyBkb25uw6llcyBjb21tdW5lcwogICAtIEluZm9ybWF0aW9ucyB0ZWNobmljaWVuCiAgIC0gRG9ubsOpZXMgZGUgc2l0ZXMKCjMuICoqQnVzIGRlIENvbW11bmljYXRpb24qKgogICAtIMOJY2hhbmdlIGVudHJlIG1vZHVsZXMKICAgLSBTeXN0w6htZSBkJ8OpdsOpbmVtZW50cwogICAtIFJvdXRhZ2UgZGVzIGRvbm7DqWVzCgojIyBQcmluY2lwZXMgZGUgQ29uY2VwdGlvbgoKIyMjIFN0YWJpbGl0w6kKLSBJc29sYXRpb24gY29tcGxldGUgZGVzIG1vZHVsZXMKLSBUb2zDqXJhbmNlIGF1eCBlcnJldXJzCi0gTcOpY2FuaXNtZSBkZSByZXByaXNlCgojIyMgUGVyZm9ybWFuY2UKLSBNaW5pbWFsIG92ZXJoZWFkCi0gQ2hhcmdlbWVudCBkeW5hbWlxdWUgZWZmaWNhY2UKLSBPcHRpbWlzYXRpb24gbcOpbW9pcmUKCiMjIEZvbmN0aW9ubmFsaXTDqXMgQ2zDqXMKCiMjIyBQcm9maWwgVGVjaG5pY2llbgotIERvbm7DqWVzIGRlIGJhc2UKLSBTaWduYXR1cmUKLSBJbmZvcm1hdGlvbnMgcHJvZmVzc2lvbm5lbGxlcwoKIyMjIEdlc3Rpb24gZGVzIFBhcmFtw6h0cmVzCi0gVGjDqG1lIChzb21icmUvY2xhaXIpCi0gUsOpZ2xhZ2VzIGdsb2JhdXgKLSBDb25maWd1cmF0aW9uIG1vZHVsZXMKCiMjIE3DqWNhbmlzbWVzIEludGVybmVzCgojIyMgU3lzdMOobWUgZCdBw6l2w6luZW1lbnRzCi0gQ29tbXVuaWNhdGlvbiBpbnRlci1tb2R1bGVzCi0gRMOpY291cGxhZ2UgZGVzIGNvbXBvc2FudHMKLSBFeHRlbnNpYmlsaXTDqQoKIyMjIEdlc3Rpb24gZGVzIFBlcm1pc3Npb25zCi0gU3lzdMOobWUgbmF0aWYgQW5kcm9pZAotIENvbnTDrm9sZSB1dGlsaXNhdGV1cgotIFRyYW5zcGFyZW5jZQoKIyMgU8OpY3VyaXTDqSBldCBJc29sYXRpb24KCiMjIyBTYW5kYm94IGRlcyBNb2R1bGVzCi0gSXNvbGVtZW50IGRlcyByZXNzb3VyY2VzCi0gTGltaXRhdGlvbnMgZGVzIGFjY8OocwoKIyMgRXh0ZW5zaWJpbGl0w6kKLSBJbnRlcmZhY2VzIHN0YW5kYXJkaXPDqWVzCi0gTcOpY2FuaXNtZSBkZSBwbHVnLWluCi0gRmFjaWxpdMOpIGQnYWpvdXQgZGUgZm9uY3Rpb25uYWxpdMOpcw==
+# Architecture Core de l'Application Ouxy Next
+
+## Vision Systémique
+
+### Principe Fondamental
+L'architecture core n'est PAS un ensemble de composants isolés, mais UN SYSTÈME VIVANT où chaque élément interagit de manière organique.
+
+## Structure Principale
+
+### Composants Fondamentaux
+1. **Bus d'Événements**
+   - Point central de communication
+   - IMPACT SYSTÉMIQUE : Influence TOUS les modules
+   - Responsable de la cohérence globale
+
+2. **Système de Persistance**
+   - Mémoire vivante de l'application
+   - IMPACTS DIRECTS :
+     * Authentification
+     * Modules de stockage
+     * Configuration système
+
+3. **Système de Sécurité**
+   - Gardien transversal
+   - EFFETS CASCADES :
+     * Validation des modules
+     * Gestion des permissions
+     * Logging de sécurité
+
+## Principes d'Interaction
+
+### Communication Inter-Composants
+- Chaque composant a des RESPONSABILITÉS PRÉCISES
+- Interactions définies par des CONTRATS STRICTS
+- Aucun composant n'est une île
+
+### Mécanismes de Validation
+- Validation croisée des interfaces
+- Tests d'intégration systématiques
+- Simulation des interactions complexes
+
+## Stratégie de Développement
+
+### Anti-Patterns à Proscrire
+- Développement en silo
+- Ignorance des dépendances
+- Modifications sans considération globale
+
+### Bonnes Pratiques
+- Documentation des points de contact
+- Tests d'intégration poussés
+- Communication permanente
+
+## Matrice de Risques
+
+### Niveaux d'Impact des Modifications
+- Bus d'événements : Critique ⚠️⚠️⚠️⚠️
+- Persistance : Élevé ⚠️⚠️⚠️
+- Sécurité : Modéré ⚠️⚠️
+
+## Recommandation Finale
+
+**🌟 Chaque ligne de code doit servir l'écosystème, pas seulement une fonction locale**
