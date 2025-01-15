@@ -53,12 +53,12 @@ class DebugActivity : AppCompatActivity() {
             binding.eventLogsRecyclerView.scrollToPosition(logs.size - 1)
         }
 
-        viewModel.events.observe(this) { event ->
+        viewModel.events.observe(this) { _ ->
             // Les événements sont maintenant gérés par l'adapter
         }
 
         lifecycleScope.launch {
-            viewModel.systemEvents.collect { event ->
+            viewModel.systemEvents.collect { _ ->
                 // Les événements système sont maintenant gérés par l'adapter
             }
         }
