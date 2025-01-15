@@ -29,3 +29,34 @@
 - Amélioration de la gestion des erreurs
 - Tests plus approfondis des communications inter-modules
 - Documentation détaillée pour les développeurs de modules
+
+## [15 Janvier 2025] Problèmes Structurels Détectés
+
+### Contexte
+- Revue complète du projet
+- Anomalies détectées dans la structure du code
+- Possible suppression de code non documentée
+
+### Actions Constatées
+- ❌ Disparition du code source du core (managers, etc.)
+- ❌ Possible suppression non documentée de fonctionnalités
+- ✅ Configuration Gradle à jour et cohérente
+- ✅ Dépendances correctement définies (Room, Hilt, etc.)
+
+### Impact
+- Structure du projet compromise
+- Fonctionnalités core potentiellement perdues
+- Persistence et EventBus non localisables
+- Documentation et code désynchronisés
+
+### Réflexions & Suggestions
+- ⚠️ Nécessité urgente de restaurer/recréer le code source
+- 💡 Mettre en place des sauvegardes systématiques
+- 💡 Renforcer le processus de documentation des modifications
+- ⚠️ Revoir le processus de validation des changements
+
+### Prochain focus
+- Restauration du code source manquant
+- Audit complet des modifications récentes
+- Mise en place de garde-fous pour éviter les suppressions non documentées
+- Synchronisation code/documentation
