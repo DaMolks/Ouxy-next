@@ -2,8 +2,8 @@ package com.damolks.ouxynext.di
 
 import com.damolks.ouxynext.core.EventBus
 import com.damolks.ouxynext.core.ModuleManager
-import com.damolks.ouxynext.core.impl.DefaultModuleManager
-import com.damolks.ouxynext.core.impl.DefaultEventBus
+import com.damolks.ouxynext.impl.DefaultModuleManager
+import com.damolks.ouxynext.impl.DefaultEventBus
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
