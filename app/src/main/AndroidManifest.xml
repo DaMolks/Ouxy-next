@@ -25,13 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Module Activities -->
-        <activity
-            android:name="com.damolks.ouxynext.testmodule.TestModuleActivity"
-            android:exported="false"
-            android:label="@string/title_activity_test_module"
-            android:theme="@style/Theme.OuxyNext" />
     </application>
 
 </manifest>
