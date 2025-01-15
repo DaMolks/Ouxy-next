@@ -8,10 +8,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DefaultModuleManager @Inject constructor() : ModuleManager {
+class DefaultModuleManager @Inject constructor() : ModuleManager() {
     private val _installedModules = MutableLiveData<List<ModuleInfo>>(emptyList())
-    override val installedModules: LiveData<List<ModuleInfo>>
-        get() = _installedModules
+    override val installedModules: LiveData<List<ModuleInfo>> = _installedModules
 
     override fun loadModule(moduleId: String) {
         val modules = _installedModules.value?.map { 
