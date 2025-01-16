@@ -1,52 +1,74 @@
-# Roadmap Ouxy Next - Approche Itérative et Modulaire
+# 🚀 ROADMAP Ouxy Next
 
-## Principe Directeur
-**MVP Incrémental : Construction par couches minimales et validation systématique**
+## 📋 Status du Projet
 
-## Phase 0 : Préparation Minimale
+### ⚙️ Phase 0: Infrastructure de Base (Core Components)
 
-### 0.1 Infrastructure de Base
-- [x] Définition des interfaces core
-- [x] Modèle de communication minimal
-- [ ] Validation technique préliminaire
+#### 0.1 Core API [Assigné: Claude-X]
+- [ ] Interfaces de base
+  - [ ] Définition des contrats
+  - [ ] Structure des modèles
+- [ ] Tests unitaires
+- [ ] Documentation
 
-### 0.2 Première Couche Fonctionnelle
+#### 0.2 Core Events [Assigné: Claude-Y]
 - [ ] Bus d'événements minimal
-- [ ] Persistance basique
-- [ ] Sécurité embryonnaire
+  - [ ] Système de publication/souscription
+  - [ ] Types d'événements standards
+- [ ] Tests unitaires
+- [ ] Documentation
 
-## Phase 1 : MVP Restreint
+#### 0.3 Core Database [Assigné: Claude-Z]
+- [ ] Configuration Room
+  - [ ] Entités de base
+  - [ ] DAOs
+- [ ] Tests unitaires
+- [ ] Documentation
 
-### 1.1 Core Applicatif
-- [ ] Interface principale réduite
-- [ ] Navigation basique
-- [ ] Gestion de module embryonnaire
+#### 0.4 Core Security [À assigner]
+- [ ] Système d'authentification basique
+- [ ] Gestion des permissions
+- [ ] Tests unitaires
+- [ ] Documentation
 
-### 1.2 Premier Module Prototype
-- [ ] Module Notes très simple
-- [ ] Intégration minimale
-- [ ] Tests de faisabilité
+#### 0.5 Core Module [À assigner]
+- [ ] Chargement des modules
+- [ ] Gestion du cycle de vie
+- [ ] Tests unitaires
+- [ ] Documentation
 
-## Stratégie de Développement
+### 🔍 Phase 1: Tests d'Intégration
+- [ ] Tests entre composants core
+- [ ] Validation des performances
+- [ ] Documentation des tests
 
-### Principes
-1. Itérations courtes (1-2 semaines)
-2. Validation systématique
-3. Minimal viable product
-4. Focus sur l'intégration
+## 📝 Notes & Subtilités
 
-### Critères de Validation
-- Cohérence architecturale
-- Qualité de l'intégration
-- Tests de non-régression
+### Points Critiques
+- Chaque composant doit être testable indépendamment
+- Les interfaces entre composants doivent être stables
+- La documentation doit être mise à jour à chaque étape
 
-## Points de Vigilance
+### Règles de Développement
+1. Chaque feature doit avoir ses tests unitaires
+2. Validation obligatoire avant merge
+3. Mise à jour de la doc technique
 
-### Risques À Surveiller
-- Complexity creep
-- Dérives techniques
-- Incohérences entre composants
+### Dépendances entre Composants
+- Core API : Aucune dépendance
+- Core Events : Dépend de Core API
+- Core Database : Dépend de Core API
+- Core Security : Dépend de Core API & Events
+- Core Module : Dépend de tous les autres
 
-## Recommandation Finale
+## 🔄 Process de Mise à Jour
+1. Cocher les tâches complétées
+2. Ajouter les notes pertinentes
+3. Mettre à jour les assignations
+4. Documenter les blocages
 
-**🌟 Construire un écosystème, pas juste une application**
+## 💡 Suggestions d'Amélioration
+*Ajouter ici les idées et suggestions au fil du développement*
+
+## ⚠️ Blocages Actuels
+*Documenter ici les points bloquants*
