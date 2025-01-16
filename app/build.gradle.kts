@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":core:api"))
+    implementation(project(":core:events"))
     implementation(project(":test-module"))
     
     implementation("androidx.core:core-ktx:1.12.0")
