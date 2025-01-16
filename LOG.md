@@ -1,27 +1,30 @@
 # Journal des Modifications
 
-## [2025-01-16] Mise en place Core API
+## [2025-01-16] Setup Initial Core API
 
 ### Contexte
-- Besoin d'une base solide pour le développement modulaire
-- Nécessité de contrats clairs entre composants
+- Démarrage du projet avec une nouvelle approche modulaire
+- Besoin d'une base solide pour le développement 
+- Problèmes rencontrés avec la configuration Gradle
 
 ### Actions Réalisées
-- ✅ Création de la structure du projet
-- ✅ Définition des interfaces de base (OuxyModule, Event, EventBus)
-- ✅ Implémentation du module de test
-- ✅ Mise en place des tests unitaires
+- ✅ Structure du projet mise en place
+- ✅ Configuration Gradle initiale
+- ✅ Architecture core-api de base
+- ✅ Tests unitaires préparés
+- ✅ Interfaces EventBus et Module définies
 
 ### Impact
-- Composants affectés : core-api, test-module
-- Structure de base en place pour les futurs développements
-- Tests validant le concept
+- Setup de l'environnement de développement
+- Base pour les futurs modules
+- Framework de test en place
 
 ### Réflexions & Suggestions
-- 💡 Envisager un système de versioning des interfaces
-- ⚠️ Maintenir une documentation claire des contrats
-- 📋 Besoin de validation avec des cas d'usage réels
+- 💡 La configuration Gradle nécessite plus de stabilisation
+- ⚠️ Attention aux versions d'Android Gradle Plugin
+- 📋 Besoin de documentation plus détaillée sur le setup
 
 ### Prochain focus
-- Implémentation du bus d'événements
-- Tests d'intégration avec le module de test
+- Résolution des problèmes de build
+- Implémentation complète de l'EventBus
+- Setup du premier module de test
