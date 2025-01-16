@@ -4,21 +4,22 @@
 
 ### ⚙️ Phase 0: Infrastructure de Base (Core Components)
 
-#### 0.1 Core API [Assigné: Claude-X]
-- [ ] Interfaces de base
-  - [ ] Définition des contrats
-  - [ ] Structure des modèles
-- [ ] Tests unitaires
-- [ ] Documentation
+#### 0.1 Core API [Claude-1]
+- [x] Interfaces de base
+  - [x] Définition des contrats
+  - [x] Structure des modèles
+- [x] Tests unitaires
+- [x] Documentation
+- [x] Module de test validant l'implémentation
 
-#### 0.2 Core Events [Assigné: Claude-Y]
+#### 0.2 Core Events [À assigner]
 - [ ] Bus d'événements minimal
   - [ ] Système de publication/souscription
   - [ ] Types d'événements standards
 - [ ] Tests unitaires
 - [ ] Documentation
 
-#### 0.3 Core Database [Assigné: Claude-Z]
+#### 0.3 Core Database [À assigner]
 - [ ] Configuration Room
   - [ ] Entités de base
   - [ ] DAOs
@@ -55,7 +56,7 @@
 3. Mise à jour de la doc technique
 
 ### Dépendances entre Composants
-- Core API : Aucune dépendance
+- Core API : Aucune dépendance ✅
 - Core Events : Dépend de Core API
 - Core Database : Dépend de Core API
 - Core Security : Dépend de Core API & Events
@@ -68,7 +69,8 @@
 4. Documenter les blocages
 
 ## 💡 Suggestions d'Amélioration
-*Ajouter ici les idées et suggestions au fil du développement*
+- Ajouter plus de validations dans les interfaces de base
+- Considérer l'ajout d'un système de versioning des interfaces
 
 ## ⚠️ Blocages Actuels
-*Documenter ici les points bloquants*
+*Aucun blocage actuel*
