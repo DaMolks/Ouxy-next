@@ -1,40 +1,44 @@
 # Notes de Développement
 
-## Approche Adoptée
-
-### Structure Modulaire
-- Core API : Interfaces de base et contrats
-- Core Events : Système de communication
-- Core Database : Persistence des données
-- Core Security : Gestion des permissions
-- Core Module : Gestion du cycle de vie
-
-### Méthodologie
-1. Développer chaque composant de manière indépendante
-2. Tests unitaires pour chaque fonctionnalité
-3. Intégration progressive
+## État Actuel
 
 ### Configuration Gradle
-- Utiliser AGP 8.0.2 et Gradle 8.0
-- Désactiver buildConfig si non nécessaire
-- Activer le desugaring pour Java 8+
-- Optimiser avec le cache Gradle
+- AGP 7.4.2 avec Gradle 7.5
+- Java 8 pour maximiser la compatibilité
+- Configuration minimale pour éviter les problèmes
 
-### Points d'Attention
-1. Vérifier la compatibilité des versions
-2. Maintenir une documentation à jour
-3. Garder les modules indépendants
-4. Tester chaque étape
+### Structure
+- Core API : Interfaces de base
+- Core Events : Communication (à implémenter)
+- Core Database : Persistence (à implémenter)
+- App : Application de test
 
-## Reprise du Développement
+### Points Bloquants
+- Problèmes de configuration Gradle
+- Incompatibilités entre versions
+- Build system instable
 
-Pour reprendre le développement :
-1. Vérifier les problèmes de build
-2. Implémenter l'EventBus
-3. Créer le module de test
-4. Intégrer le système de permissions
+## Pour le Prochain Claude
 
-### Problèmes Connus
-- Configuration Gradle instable
-- Build errors avec JDK
-- Intégration Android Studio
+### Tests à Faire
+1. Tester différentes combinaisons de versions :
+   - AGP 7.x avec Gradle 7.x
+   - AGP 8.x avec Gradle 8.x
+2. Vérifier la compatibilité JDK
+3. Tester les configurations minimales
+
+### Approche Suggérée
+1. Commencer avec une configuration minimale
+2. Ajouter les fonctionnalités une par une
+3. Tester systématiquement chaque changement
+4. Documenter les configurations qui fonctionnent
+
+### Documentation Prioritaire
+- Versions testées et résultats
+- Configurations fonctionnelles
+- Points de blocage rencontrés
+- Solutions trouvées
+
+## Références
+- AGP Compatibility: https://developer.android.com/studio/releases/gradle-plugin
+- Gradle Release Notes: https://gradle.org/releases/
